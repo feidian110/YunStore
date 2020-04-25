@@ -11,6 +11,10 @@ return [
         ],
         // 子模块配置
         'modules' => [
+            // 基础
+            'pick' => [
+                'class' => 'addons\YunStore\merchant\modules\pick\Module',
+            ],
         ],
     ],
 
@@ -23,6 +27,16 @@ return [
     // ----------------------- 菜单配置 ----------------------- //
 
     'menu' => [
+        [
+            'title' => '门店管理',
+            'route' => 'main/index',
+            'icon' => 'fa fa-heart',
+        ],
+        [
+            'title' => '自提点刮管理',
+            'route' => 'pick/index',
+            'icon' => 'fa fa-heart',
+        ],
 
     ],
 

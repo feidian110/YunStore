@@ -1,0 +1,20 @@
+<?php
+
+namespace addons\YunStore\merchant\modules\pick\controllers;
+
+use yii\web\Controller;
+
+/**
+ * Default controller for the `pick` module
+ */
+class DefaultController extends Controller
+{
+    /**
+     * Renders the index view for the module
+     * @return string
+     */
+    public function actionIndex()
+    {
+        return $this->render('index');
+    }
+}

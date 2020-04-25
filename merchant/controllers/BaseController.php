@@ -16,5 +16,5 @@ class BaseController extends AddonsController
     /**
     * @var string
     */
-    // public $layout = "@addons/YunStore/merchant/views/layouts/main";
+     public $layout = "@merchant/views/layouts/main";
 }
