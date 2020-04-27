@@ -12,8 +12,14 @@ return [
         // 子模块配置
         'modules' => [
             // 基础
+            'base' => [
+                'class' => 'addons\YunStore\merchant\modules\base\Module',
+            ],
             'pick' => [
                 'class' => 'addons\YunStore\merchant\modules\pick\Module',
+            ],
+            'product' => [
+                'class' => 'addons\YunStore\merchant\modules\product\Module',
             ],
         ],
     ],

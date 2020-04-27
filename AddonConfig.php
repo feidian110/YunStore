@@ -2,12 +2,14 @@
 
 namespace addons\YunStore;
 
+use addons\YunStore\common\services\Application;
 use common\components\BaseAddonConfig;
 use addons\YunStore\common\components\Bootstrap;
 
 /**
  * Class Addon
- * @package addons\YunStore */
+ * @package addons\YunStore
+ */
 class AddonConfig extends BaseAddonConfig
 {
     /**
@@ -65,7 +67,7 @@ class AddonConfig extends BaseAddonConfig
     *
     * @var string
     */
-    public $service = '';
+    public $service = Application::class;
 
     /**
      * 参数配置开启

@@ -2,6 +2,7 @@
 
 namespace addons\YunStore\common\models;
 
+use addons\YunShop\common\models\Shop;
 use common\behaviors\MerchantBehavior;
 use common\models\common\Provinces;
 use common\models\merchant\Merchant;
@@ -83,6 +84,11 @@ class Store extends \common\models\base\BaseModel
     public function getArea()
     {
         return $this->hasOne( Provinces::class,['id' => 'area_id'] );
+    }
+
+    public function getShop()
+    {
+        return $this->hasOne( Shop::class,['store_id'=>'id'] );
     }
 
     /**
