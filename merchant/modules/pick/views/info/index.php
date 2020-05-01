@@ -34,21 +34,22 @@ use yii\grid\GridView;
                             'attribute' => 'id',
                             'headerOptions' => ['class' => 'col-md-1'],
                         ],
-
+                        [
+                            'header' => "所属门店",
+                            'attribute' => 'title',
+                            'filter' => false, //不显示搜索框
+                            'value' => function( $model ){
+                                return $model->merchant['title'].'【'.$model['store']['title'].'】';
+                            }
+                        ],
                         [
                             'attribute' => 'title',
                             'filter' => false, //不显示搜索框
                             'value' => function( $model ){
-                                return $model->merchant['title'].'('.$model->title.')';
+                                return $model->title;
                             }
                         ],
-                        [
-                            'attribute' => 'is_main',
-                            'filter' => false, //不显示搜索框
-                            'value' => function( $model ){
-                                return WhetherEnum::getValue($model->is_main);
-                            }
-                        ],
+
                         [
                             'header' => "门店基本信息",
                             'format' => 'raw',
@@ -60,11 +61,7 @@ use yii\grid\GridView;
                                 ]) ;
                             }
                         ],
-                        [
-                            'header' => "快店资质审核",
-                            'format' => 'raw',
 
-                        ],
                         [
                             'attribute' => 'sort',
                             'filter' => false, //不显示搜索框

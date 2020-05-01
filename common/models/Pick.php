@@ -2,6 +2,8 @@
 
 namespace addons\YunStore\common\models;
 
+use common\behaviors\MerchantBehavior;
+use common\models\merchant\Merchant;
 use Yii;
 
 /**
@@ -22,6 +24,7 @@ use Yii;
  */
 class Pick extends \common\models\base\BaseModel
 {
+    use MerchantBehavior;
     /**
      * {@inheritdoc}
      */
@@ -38,7 +41,7 @@ class Pick extends \common\models\base\BaseModel
         return [
             [['title', 'store_id', 'address', 'contact', 'province_id', 'city_id', 'area_id', 'contact_mobile'], 'required'],
             [['merchant_id', 'store_id', 'sort', 'status', 'created_at', 'updated_at'], 'integer'],
-            [['title', 'api_address'], 'string', 'max' => 100],
+            [['title'], 'string', 'max' => 100],
             [['address'], 'string', 'max' => 200],
             [['contact'], 'string', 'max' => 30],
             [['contact_mobile'], 'string', 'max' => 20],
@@ -67,5 +70,15 @@ class Pick extends \common\models\base\BaseModel
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
+    }
+
+    public function getMerchant()
+    {
+        return $this->hasOne( Merchant::class,['id'=>'merchant_id'] );
+    }
+
+    public function getStore()
+    {
+        return $this->hasOne( Store::class,['id'=>'store_id'] );
     }
 }

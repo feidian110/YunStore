@@ -43,8 +43,18 @@ class InfoController extends BaseController
     {
         $id = (int)Yii::$app->request->get('id');
         $model = $this->findModel($id);
+        if( Yii::$app->request->isPost ){
+            $post = Yii::$app->request->post();
+            $model->api_address = implode(',',$post['Pick']['api_address']);
+            if( $model->load($post) && $model->save() ){
+                return $this->message('自提点添加成功！',$this->redirect(['index']),'success');
+            }
+            return $this->message($this->getError($model),$this->redirect(['index']),'error');
+        }
+
         return $this->render( $this->action->id,[
-            'model' =>$model
+            'model' =>$model,
+            'store' => Yii::$app->yunStoreService->store->getDropDown()
         ] );
     }
 }

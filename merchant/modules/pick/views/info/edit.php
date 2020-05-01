@@ -25,7 +25,7 @@ $this->title = $model->isNewRecord ? "创建自提点" : "更新自提点";
 
             <div class="box-body">
                 <div class="col-lg-12">
-                    <?= $form->field($model,'store_id')->dropDownList([]);?>
+                    <?= $form->field($model,'store_id')->dropDownList($store);?>
                     <?= $form->field($model,'title')->textInput();?>
                     <?= $form->field($model,'contact')->textInput();?>
                     <?= $form->field($model,'contact_mobile')->textInput();?>

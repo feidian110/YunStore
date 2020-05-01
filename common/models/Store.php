@@ -91,6 +91,11 @@ class Store extends \common\models\base\BaseModel
         return $this->hasOne( Shop::class,['store_id'=>'id'] );
     }
 
+    public function getPick()
+    {
+        return $this->hasMany( Pick::class,['store_id'=>'id'] );
+    }
+
     /**
      * {@inheritdoc}
      */
