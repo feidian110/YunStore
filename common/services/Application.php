@@ -20,6 +20,7 @@ use common\components\Service;
  * @property \addons\YunStore\common\services\product\SpecValueService $productSpecValue 商品规格属性值
  * @property \addons\YunStore\common\services\product\MemberDiscountService $productMemberDiscount
  * @property \addons\YunStore\common\services\product\CommissionRateService $productCommissionRate
+ * @property \addons\YunStore\common\services\store\PickService $storePick
  */
 class Application extends Service
 {
@@ -38,5 +39,6 @@ class Application extends Service
         'productSpecValue' => 'addons\YunStore\common\services\product\SpecValueService',
         'productMemberDiscount' => 'addons\YunStore\common\services\product\MemberDiscountService',
         'productCommissionRate' => 'addons\YunStore\common\services\product\CommissionRateService',
+        'storePick' => 'addons\YunStore\common\services\store\PickService'
     ];
 }
