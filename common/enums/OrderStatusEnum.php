@@ -47,7 +47,7 @@ class OrderStatusEnum extends BaseEnum
             // self::REPEAL_APPLY => '撤销申请',
             // 预售
             // self::SUBSCRIPTION_PAY => '订金已支付',
-            // self::STOCK_UP => '备货中',
+            self::STOCK_UP => '备货中',
         ];
     }
 

@@ -34,6 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="tab-content">
                 <div class="tab-pane active p-xs" id="tab_1">
                     <?= $form->field($model, 'name')->textInput(); ?>
+                    <?= $form->field($model,'store_id')->dropDownList(Yii::$app->yunStoreService->store->getDropDown());?>
                     <div class="row">
                         <div class="col-sm-4">
                             <?= $form->field($model, 'cate_id')->dropDownList($cates, [

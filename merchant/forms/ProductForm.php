@@ -108,6 +108,7 @@ class ProductForm extends Product
                 $datum['name'] = '';
                 $datum['product_id'] = $this->id;
                 $datum['merchant_id'] = $this->merchant_id;
+                $datum['store_id'] = $this->store_id;
                 $model->attributes = $datum;
 
                 if (!$model->validate()) {

@@ -96,6 +96,11 @@ class Store extends \common\models\base\BaseModel
         return $this->hasMany( Pick::class,['store_id'=>'id'] );
     }
 
+    public function getHours()
+    {
+        return $this->hasOne( BusinessHours::class,['store_id'=>'id'] );
+    }
+
     /**
      * {@inheritdoc}
      */

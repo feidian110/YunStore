@@ -1,6 +1,8 @@
 <?php
 
+use addons\YunStore\common\enums\StateEnum;
 use common\enums\WhetherEnum;
+use kartik\daterange\DateRangePicker;
 use yii\widgets\ActiveForm;
 
 $this->title = $model->isNewRecord ? "添加门店" : "编辑门店";
@@ -23,7 +25,7 @@ $this->params['breadcrumbs'][] = ['label' => $this->title];
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#tab_1" data-toggle="tab">基本设置</a></li>
                 <li><a href="#tab_2" data-toggle="tab">门店描述</a></li>
-
+                <li><a href="#tab_3" data-toggle="tab">营业时间</a></li>
 
             </ul>
             <div class="tab-content">
@@ -110,6 +112,113 @@ $this->params['breadcrumbs'][] = ['label' => $this->title];
                         ],
                     ]) ?>
                 </div>
+                <div class="tab-pane" id="tab_3">
+                    <div class="alert alert-info alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <h4><i class="icon fa fa-info"></i> 说明：</h4>
+                        <ul>
+                            <li>默认关闭周营业时间，开启每天营业时间段</li>
+                            <li>开启每天营业时间段的，第一个时间段设置为00:00至00:00则代表24小时营业。</li>
+                            <li>开启每周几营业时间段的，第一个时间段设置为00:00至00:00则代表24小时营业。</li>
+                            <li>默认关闭周几营业时间段，关闭代表这一天营业时间为休息中；</li>
+                            <li>如果想要设置营业时间不跨天，则结束时间最晚只支持设置到23:59</li>
+                        </ul>
+                    </div>
+                    <?=$form->field($hours,'open_week')->dropDownList(StateEnum::getMap(),['value'=>$hours->isNewRecord ? StateEnum::DISABLED : $hours['open_week']]);?>
+                    <div class="row">
+                        <div class="col-sm-3 border-right">
+                            <?= $form->field($hours, 'open_time_one',[
+                                'labelOptions' => ['class'=>'col-sm-4 control-label text-right'],
+                                'template' => '{label}<div class="col-sm-8">{input}</div>'
+                            ])->widget(kartik\time\TimePicker::class, [
+                                'language' => 'zh-CN',
+                                'pluginOptions' => [
+                                    'defaultTime' => '00:00:00',
+                                    'showSeconds' => true,
+                                    'showMeridian' => false,
+                                    'minuteStep' => 1,
+                                    'secondStep' => 5,
+                                ]
+                            ]);?>
+                        </div>
+
+                        <div class="col-sm-6 border-right">
+                            <?= $form->field($hours, 'close_time_one')->widget(kartik\time\TimePicker::class, [
+                                'language' => 'zh-CN',
+                                'pluginOptions' => [
+                                    'defaultTime' => '00:00:00',
+                                    'showSeconds' => true,
+                                    'showMeridian' => false,
+                                    'minuteStep' => 1,
+                                    'secondStep' => 5,
+                                ]
+                            ]);?>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-3 border-right">
+                            <?= $form->field($hours, 'open_time_two',[
+                                'labelOptions' => ['class'=>'col-sm-4 control-label text-right'],
+                                'template' => '{label}<div class="col-sm-8">{input}</div>'])->widget(kartik\time\TimePicker::class, [
+                                'language' => 'zh-CN',
+                                'pluginOptions' => [
+                                    'defaultTime' => '00:00:00',
+                                    'showSeconds' => true,
+                                    'showMeridian' => false,
+                                    'minuteStep' => 1,
+                                    'secondStep' => 5,
+                                ]
+                            ]);?>
+                        </div>
+
+                        <div class="col-sm-6 border-right">
+                            <?= $form->field($hours, 'close_time_two')->widget(kartik\time\TimePicker::class, [
+                                'language' => 'zh-CN',
+                                'pluginOptions' => [
+                                    'defaultTime' => '00:00:00',
+                                    'showSeconds' => true,
+                                    'showMeridian' => false,
+                                    'minuteStep' => 1,
+                                    'secondStep' => 5,
+                                ]
+                            ]);?>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3 border-right">
+                            <?= $form->field($hours, 'open_time_three',[
+                                'labelOptions' => ['class'=>'col-sm-4 control-label text-right'],
+                                'template' => '{label}<div class="col-sm-8">{input}</div>'])->widget(kartik\time\TimePicker::class, [
+                                'language' => 'zh-CN',
+                                'pluginOptions' => [
+                                    'defaultTime' => '00:00:00',
+                                    'showSeconds' => true,
+                                    'showMeridian' => false,
+                                    'minuteStep' => 1,
+                                    'secondStep' => 5,
+                                ]
+                            ]);?>
+                        </div>
+
+                        <div class="col-sm-6 border-right">
+                            <?= $form->field($hours, 'close_time_three')->widget(kartik\time\TimePicker::class, [
+                                'language' => 'zh-CN',
+                                'pluginOptions' => [
+                                    'defaultTime' => '00:00:00',
+                                    'showSeconds' => true,
+                                    'showMeridian' => false,
+                                    'minuteStep' => 1,
+                                    'secondStep' => 5,
+                                ]
+                            ]);?>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
                 <div class="text-center">
                     <button class="btn btn-primary" type="submit">保存</button>
                     <span class="btn btn-white" onclick="history.go(-1)">返回</span>
@@ -119,3 +228,11 @@ $this->params['breadcrumbs'][] = ['label' => $this->title];
         <?php ActiveForm::end(); ?>
     </div>
 </div>
+
+<?php
+$addon = <<< HTML
+<span class="input-group-addon">
+    <i class="glyphicon glyphicon-calendar"></i>
+</span>
+HTML;
+?>

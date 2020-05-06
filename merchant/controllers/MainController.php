@@ -4,6 +4,7 @@
 namespace addons\YunStore\merchant\controllers;
 
 
+use addons\YunStore\common\models\BusinessHours;
 use addons\YunStore\common\models\Store;
 use common\enums\StatusEnum;
 use common\models\base\SearchModel;
@@ -45,18 +46,28 @@ class MainController extends BaseController
     {
         $id = Yii::$app->request->get('id');
         $model = $this->findModel($id);
+        $hours = BusinessHours::findOne(['store_id'=>$id]);
+        if( $hours == null ){
+            $hours = new BusinessHours();
+        }
         if( Yii::$app->request->isPost ){
             // ajax 校验
             $this->activeFormValidate($model);
             $data = Yii::$app->request->post();
             $data['Store']['api_address'] = implode(',',$data['Store']['api_address']);
+
             if( $model->load($data) && $model->save() ){
-                return $this->message('门店创建成功！', $this->redirect(['index']), 'success');
+                if($hours->load($data) && $hours->save()){
+                    $hours->store_id = $model->id;
+                    return $this->message('门店创建成功！', $this->redirect(['index']), 'success');
+                }
+                return $this->message($this->getError($hours), $this->redirect(['index']), 'error');
             }
             return $this->message($this->getError($model), $this->redirect(['index']), 'error');
         }
         return $this->render( $this->action->id,[
-            'model' => $model
+            'model' => $model,
+            'hours' =>$hours
         ] );
     }
 
