@@ -11,6 +11,6 @@ class PersonnelController extends BaseController
 
     public function actionIndex()
     {
-        return $this->render( $this->Action->id );
+        return $this->render( $this->action->id );
     }
 }

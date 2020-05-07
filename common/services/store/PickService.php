@@ -19,4 +19,13 @@ class PickService extends Service
         }
         return ArrayHelper::map($pick,'id','title');
     }
+
+    public function getPickByMerchantId()
+    {
+        $pick = Pick::findAll(['merchant_id'=>$this->getMerchantId(),'status'=>StateEnum::ENABLED]);
+        if( $pick == null ){
+            return [];
+        }
+        return ArrayHelper::map($pick,'id','title');
+    }
 }
