@@ -23,9 +23,9 @@ class OrderStatusEnum extends BaseEnum
     const RETUREN = -3;
     const REPEAL = -4;
     const REPEAL_APPLY = -5;
-    const WHOLESALE = 101;
-    const SUBSCRIPTION_PAY = 201;
-    const STOCK_UP = 202;
+   // const WHOLESALE = 101;
+   // const SUBSCRIPTION_PAY = 201;
+   // const STOCK_UP = 202;
 
     /**
      * @return array
@@ -33,21 +33,22 @@ class OrderStatusEnum extends BaseEnum
     public static function getMap(): array
     {
         return [
-            self::NOT_PAY => '待付款',
+            self::NOT_PAY => '待发货',
             // 拼团
             // self::WHOLESALE => '待成团',
-            self::PAY => '待发货', // 已付款
+           // self::PAY => '待发货', // 已付款
             self::SHIPMENTS => '已发货',
             self::SING => '已收货',
+            self::PAY => '已收款',
             self::ACCOMPLISH => '已完成',
             self::REPEAL => '已关闭',
             // self::RETUREN_APPLY => '退货申请',
-            self::RETUREN_ING => '退款中',
+           // self::RETUREN_ING => '退款中',
             // self::RETUREN => '已退货',
             // self::REPEAL_APPLY => '撤销申请',
             // 预售
             // self::SUBSCRIPTION_PAY => '订金已支付',
-            self::STOCK_UP => '备货中',
+            //self::STOCK_UP => '备货中',
         ];
     }
 
