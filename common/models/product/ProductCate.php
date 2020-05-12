@@ -50,7 +50,6 @@ class ProductCate extends \common\models\base\BaseModel
             [['title'], 'string', 'max' => 50],
             [['sub_title'], 'string', 'max' => 60],
             [['cover'], 'string', 'max' => 255],
-            [['week_display'], 'string', 'max' => 10],
         ];
     }
 
